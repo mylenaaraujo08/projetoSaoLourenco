@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "rootDir": "./",
     "target": "es5",
     "module": "commonjs",
     "strict": true,
@@ -9,7 +14,7 @@
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "moduleResolution": "node",
     "noEmit": true
   }
 }

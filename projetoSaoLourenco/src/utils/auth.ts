@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-const SECRET_KEY = 'seuSegredoSuperSecreto'; // Troque isso por uma chave secreta mais segura em produção
+const SECRET_KEY = '1234'; // Troque isso por uma chave secreta mais segura em produção
 
 const generateToken = (userId: string): string => {
     return jwt.sign({ userId }, SECRET_KEY, { expiresIn: '1h' });

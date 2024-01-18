@@ -2,12 +2,13 @@
   "name": "projetosaolourenco",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server/indexServer.ts",
   "scripts": {
-    "start": "node dist/server/indexServer.js",
-    "start-dev": "nodemon src/server/indexServer.ts",
-    "build": "tsc",
-    "dev": "npm run build && npm run start-dev"
+    "start-teste-conexao": "ts-node -r tsconfig-paths/register src/server/indexServer.ts",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm -- migration:generate -n",
+    "migration:run": "npm run typeorm -- migration:run",
+    "migration:revert": "npm run typeorm -- migration:revert"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "mongoose": "^8.0.4",
     "mysql2": "^3.7.0",
     "pg": "^8.11.3",
+    "pg-promise": "^11.5.4",
     "reflect-metadata": "^0.1.12",
     "routing-controllers": "^0.10.4",
     "typeorm": "^0.3.19",
@@ -39,8 +41,10 @@
     "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20.10.8",
     "@types/pg": "^8.10.9",
+    "dotenv": "^10.0.0",
     "nodemon": "^3.0.2",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
   }
 }

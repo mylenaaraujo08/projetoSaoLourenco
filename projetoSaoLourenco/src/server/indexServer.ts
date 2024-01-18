@@ -1,21 +1,43 @@
-import app from "./app";
-import pool from "./database";
+import pgPromise from "pg-promise";
+import express from "express";
+import { createServer, Server } from "http";
 
-// Conexão com a database
-pool
-  .connect()
-  .then(() => {
-    console.log("Connected to the database");
-  })
-  .catch((err) => {
-    console.error("Error connecting to the database", err);
-  });
+// Configuração da conexão com o banco de dados
 
-const PORT = process.env.PORT || 8080;
+// Inicialização do pg-promise
+const pgp = pgPromise();
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log(`Server is accessible at https://localhost:${PORT}`);
+// Criação da própria definição do tipo IConnectionParameters
+interface IConnectionParameters {
+  host: string;
+  port: number;
+  database: string;
+  user: string;
+  password: string;
+}
+
+// Criação da instância do banco de dados
+const connectionOptions: IConnectionParameters = {
+  host: "localhost",
+  port: 5432,
+  database: "bancoSecSaoLourenco",
+  user: "postgres",
+  password: "1234", 
+};
+
+
+const db = pgp({
+  ...connectionOptions,
+  password: connectionOptions.password, 
 });
 
-export default app;
+// Configuração do Express
+const app: express.Express = express();
+const httpServer: Server = createServer(app);
+
+const PORT = process.env.PORT || 5432;
+
+httpServer.listen(PORT, () => {
+  console.log(`+++ O servidor está rodando na porta ${PORT} +++`);
+  console.log(`+++ O servidor está acessível em https://localhost:${PORT} +++`);
+});

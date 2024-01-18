@@ -2,7 +2,7 @@ import { Pool, QueryResult } from "pg";
 
 export class TurmaModel extends Pool {
   static pool = new Pool({
-    connectionString: "postgresql://usuario:senha@servidor:porta/bancoDeDados",
+    connectionString: "postgres://postgres:1234@localhost:5432/bancoSecSaoLourenco",
   });
 
   id: string;
