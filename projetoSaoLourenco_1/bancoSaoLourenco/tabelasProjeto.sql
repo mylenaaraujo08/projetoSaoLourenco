@@ -19,6 +19,8 @@ CREATE TABLE avaliacao (
 );
 ALTER TABLE avaliacao
 ADD cartao_resposta_matematica JSONB;
+ALTER TABLE avaliacao
+ALTER COLUMN pontuacao TYPE VARCHAR(10);
 
 CREATE TABLE pea (
   id SERIAL PRIMARY KEY,
@@ -392,6 +394,31 @@ INSERT INTO escolas (nome_fantasia, razao_social, cnpj, endereco, contato, respo
 ('Escola Municipal Alfredo Dias de Oliveira, Escola Municipal Carmela Orrico Lapenda', '', '', '', '', '', ''),
 ('Escola Mun Jornalista Cristina Tavares', '', '', '', '', '', ''),
 ('Escola Municipal Rosina Labanca', '', '', '', '', '', '');
+
+
+INSERT INTO avaliacao (
+    data_hora,
+    email,
+    pontuacao,
+    unidade_escolar,
+    regiao_escola,
+    serie,
+    turma,
+    nome_completo_estudante,
+    estudante_com_deficiencia,
+    cartao_resposta_lingua_portuguesa,
+    cartao_resposta_matematica
+) VALUES
+('2023-09-01 20:39:04', 'ecsm022020@gmail.com', '18 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'A', 'Adriano da Silva Francisco Júnior', false, '{"lingua_portuguesa": ["A","D","A","C","B","A","C","A","A","B","D","D","D","C","A","B","A","C","C","A","C","C","A","A","A","C","C","A","B","A","C","A","B","B","B","A","B","C","D","A","C","A","B","C","A","C","A","A","B","D","A","C","F"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]}),
+('2023-09-01 20:40:51', 'ecsm022020@gmail.com', '15 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'A', 'Alexsandra da Silva Santos Nunes', false, '{"lingua_portuguesa": ["C","D","D","A","A","C","A","C","A","B","B","D","C","D","D","D","C","D","A","B","D","A","D","D","A","C","C","A","C","B","B","A","D","A","B","D","A","C","C","A","C","B","B","C","B","D","C","D","C","A","Múltipla Marcação","A","B"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]}),
+('2023-09-01 20:42:30', 'ecsm022020@gmail.com', '12 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'A', 'Carlos Daniel da Silva Santos', false, '{"lingua_portuguesa": ["B","D","D","A","A","C","C","B","C","C","B","D","B","B","A","D","A","C","D","B","D","D","A","C","C","A","D","D","A","C","D","A","C","A","A","D","A","C","D","B","C","B","A","D","B","A","B","D","B","C","C","A","D","B","A"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]});
+('2023-09-01 21:13:02', 'ecsm022020@gmail.com', '20 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'A', 'Yann Thiago', false, '{"lingua_portuguesa": ["C","D","D","A","A","A","D","B","A","A","B","B","D","A","C","D","A","A","C","D","C","C","A","D","A","B","C","C","A","D","A","B","C","C","D","B","D","B","A","B","D","D","D","B","B","A","B","D","D","A","A","B"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]}),
+('2023-09-01 21:14:41', 'ecsm022020@gmail.com', '20 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'A', 'Yann Thiago Rodrigues dos Santos', false, '{"lingua_portuguesa": ["C","D","D","A","A","A","D","B","A","A","B","B","D","A","C","D","A","A","C","D","C","C","A","D","A","B","C","C","A","D","A","B","C","C","D","B","D","B","A","B","D","D","D","B","B","A","B","D","D","D","B"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]}),
+('2023-09-04 08:12:50', 'ecsm022020@gmail.com', '29 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'B', 'Alicia Vitória Viegas da Silva', false, '{"lingua_portuguesa": ["C","D","A","C","D","A","D","C","A","B","B","D","C","A","D","A","A","C","D","A","A","C","A","Múltipla Marcação","A","C","C","A","D","D","Múltipla Marcação","C","D","A","B","C","D","C","B","Múltipla Marcação","B","A","D","C","D","A","B","C","D","C","B","C","Múltipla Marcação","B","A"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]}),
+('2023-09-04 08:15:35', 'ecsm022020@gmail.com', '20 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'B', 'Carlos Alberto de Santana Alves Cabral', false, '{"lingua_portuguesa": ["C","C","A","C","D","A","D","D","D","B","D","D","A","B","D","A","C","C","B","B","A","D","A","C","C","A","D","A","B","C","C","D","B","B","A","D","A","B","C","D","D","A","D","A","B","D","C","A","D","B","A"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]}),
+('2023-09-04 08:24:22', 'ecsm022020@gmail.com', '20 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'B', 'Eduarda Vitória dos Santos Silva', false, '{"lingua_portuguesa": ["C","D","A","C","D","A","D","D","Múltipla Marcação","A","C","D","C","D","C","C","C","D","C","A","B","A","A","A","C","B","A","C","B","B","C","C","A","B","C","A","B","B","C","C","A","B","C","A","B","D","A","D","C","A","A","A","C","B","A","C","B","B","C","C","A","B","D","A","D","C","B","A"],"matematica": ["A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B","C","D","A","B"]});
+
+
 
  
 INSERT INTO avaliacao (
@@ -1035,3 +1062,60 @@ INSERT INTO avaliacao (
 ('9/4/2023 8:48:36', 'ecsm022020@gmail.com', '13 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'B', 'Victor Lyon Luiz Lourenço', 'Não', NULL, '{"answers": ["C","A","D","D","A","B","B","A","D","B","B","D","D","D","B","B","A","C","D","B","A","B","A","D","B","C","B","C","C","D","C","A","C","D","B","A","A","D","D","C","A","D","D","C","A","D","A","B","D","C","A","D","A","B"]}),
 ('9/4/2023 8:52:12', 'ecsm022020@gmail.com', '9 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'B', 'Yasmin de Oliveira Santos', 'Não', NULL, '{"answers": ["C","B","A","A","B","A","C","A","B","A","D","C","A","C","A","A","Múltipla Marcação","B","A","C","A","D","B","C","A","C","C","D","C","C","D","A","A","B","C","D","D","C","A","A","B","Múltipla Marcação","B","A","C","A","D","B","C","A","A","A","B","Múltipla Marcação","B","A","B"]}),
 ('9/4/2023 8:53:38', 'ecsm022020@gmail.com', '27 / 44', 'Escola Municipal Padre João Barbalho', 'Urbana', '5º', 'B', 'Yasmin Vitória Silva', 'Não', NULL, '{"answers": ["C","D","A","D","D","Múltipla Marcação","D","D","A","B","C","C","A","A","C","A","C","A","D","A","C","C","A","C","D","C","B","B","D","C","A","A","B","D","C","C","D","B","D","D","C","C","B","D","C","A","C","D","A","A","B","C","D","B"]});
+ 
+ -- Importar os dados do arquivo "avaliacao_5ano.csv"
+COPY avaliacao (
+ id,
+ email,
+ pontuacao,
+ unidade_escolar,
+ regiao_escola,
+ serie,
+ turma,
+ nome_completo_estudante,
+ estudante_com_deficiencia,
+ data_hora,
+cartao_resposta_lingua_portuguesa,
+cartao_resposta_matematica
+)
+FROM 'C:\Users\myourg\Desktop\d.v\avaliaca_5ano.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+-- Importar os dados do arquivo "avaliacao_2ano.csv"
+\COPY avaliacao (
+ data_hora,
+ email,
+ pontuacao,
+ unidade_escolar,
+ regiao_escola,
+ serie,
+ turma,
+ nome_completo_estudante,
+ estudante_com_deficiencia,
+ cartao_resposta_lingua_portuguesa,
+cartao_resposta_matematica
+)
+FROM 'C:\Users\myoug\Desktop\d.v\avaliaca_2ano.csv'
+DELIMITER ','
+CSV HEADER;
+
+-- Importar os dados do arquivo "avaliacao_9ano.csv"
+\copy avaliacao (data_hora, email, pontuacao, unidade_escolar, regiao_escola, serie, turma, nome_completo_estudante, estudante_com_deficiencia, cartao_resposta_lingua_portuguesa, cartao_resposta_matematica) FROM 'C:\Users\myoug\Desktop\d.v\avaliaca_9ano.csv' DELIMITER ',' CSV HEADER;
+
+
+
+CREATE TABLE avaliacao (
+ data_hora TIMESTAMP NOT NULL,
+ email VARCHAR(255) NOT NULL,
+ pontuacao INTEGER NOT NULL,
+ unidade_escolar VARCHAR(255) NOT NULL,
+ regiao_escola VARCHAR(255) NOT NULL,
+ serie VARCHAR(255) NOT NULL,
+ turma VARCHAR(255) NOT NULL,
+ nome_completo_estudante VARCHAR(255) NOT NULL PRIMARY KEY,
+ estudante_com_deficiencia BOOLEAN NOT NULL,
+ cartao_resposta_lingua_portuguesa JSONB NOT NULL,
+cartao_resposta_matematica JSONB NOT NULL
+);
